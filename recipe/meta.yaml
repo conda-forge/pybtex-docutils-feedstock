@@ -1,7 +1,7 @@
 {% set name = "pybtex-docutils" %}
-{% set version = "0.2.1" %}
+{% set version = "0.2.2" %}
 {% set hash_type = "sha256" %}
-{% set hash_value = "e4b075641c1d68a3e98a6d73ad3d029293fcf9e0773512315ef9c8482f251337" %}
+{% set hash_value = "ea90935da188a0f4de2fe6b32930e185c33a0e306154322ccc12e519ebb5fa7d" %}
 
 package:
   name: '{{ name|lower }}'
@@ -13,7 +13,7 @@ source:
   '{{ hash_type }}': '{{ hash_value }}'
 
 build:
-  number: 1000
+  number: 0
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
 
 requirements:
