@@ -1,5 +1,5 @@
 {% set name = "pybtex-docutils" %}
-{% set version = "1.0.0" %}
+{% set version = "1.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: cead6554b4af99c287dd29f38b1fa152c9542f56a51cb6cbc3997c95b2725b2e
+  sha256: d53aa0c31dc94d61fd30ea3f06c749e6f510f9ff0e78cb2765a9300f173d8626
 
 build:
   number: 0
