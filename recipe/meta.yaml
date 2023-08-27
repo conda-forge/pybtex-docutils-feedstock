@@ -12,6 +12,7 @@ source:
 
 build:
   number: 0
+  skip: true  # [py<37]
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
 requirements:
@@ -22,13 +23,22 @@ requirements:
     - python
     - setuptools
     - pip
+    - docutils >=0.14
+    - pybtex >=0.16
   run:
     - python
     - setuptools
-    - docutils >=0.8
+    - docutils >=0.14
     - pybtex >=0.16
 
 test:
+  requires:
+    - pip
+  imports:
+    - pybtex
+    - pybtex.plugin
+  commands:
+    - pip check
   commands:
     - python -c "import pybtex.plugin; pybtex.plugin.find_plugin('pybtex.backends', 'docutils')()"
 
