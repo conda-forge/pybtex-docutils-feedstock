@@ -1,5 +1,5 @@
 {% set name = "pybtex-docutils" %}
-{% set version = "1.0.2" %}
+{% set version = "1.0.3" %}
 
 package:
   name: {{ name|lower }}
@@ -8,10 +8,11 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 43aa353b6d498fd5ac30f0073a98e332d061d34fe619d3d50d1761f8fd4aa016
+  sha256: 3a7ebdf92b593e00e8c1c538aa9a20bca5d92d84231124715acc964d51d93c6b
 
 build:
-  number: 2
+  number: 0
+  skip: true  # [py<37]
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
 requirements:
@@ -22,13 +23,22 @@ requirements:
     - python
     - setuptools
     - pip
+    - docutils >=0.14
+    - pybtex >=0.16
   run:
     - python
     - setuptools
-    - docutils >=0.8
+    - docutils >=0.14
     - pybtex >=0.16
 
 test:
+  requires:
+    - pip
+  imports:
+    - pybtex
+    - pybtex.plugin
+  commands:
+    - pip check
   commands:
     - python -c "import pybtex.plugin; pybtex.plugin.find_plugin('pybtex.backends', 'docutils')()"
 
